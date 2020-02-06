@@ -1,0 +1,14 @@
+# to run locally: from project root run: $ docker-compose -f ./docker/docker-compose.yml up -d
+version: '3'
+services:
+  pg:
+    container_name: poc-subscriptions-pg
+    image: postgres:10.6
+    environment:
+      POSTGRES_PASSWORD: gorm
+      POSTGRES_USER: gorm
+      POSTGRES_DB: subscriptions
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.data/pg:/var/lib/postgresql/data
